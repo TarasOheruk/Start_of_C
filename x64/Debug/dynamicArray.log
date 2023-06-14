@@ -1,4 +1,0 @@
-﻿  dynamicArray.cpp
-E:\C++\dynamicArray\dynamicArray.cpp(15,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-E:\C++\dynamicArray\dynamicArray.cpp(36,18): warning C4154: deletion of an array expression; conversion to pointer supplied
-  dynamicArray.vcxproj -> E:\C++\dynamicArray\x64\Debug\dynamicArray.exe
