@@ -1,7 +1,6 @@
-#include "ocollection.h"
+#include "ovector.h"
 
 int main() {
-
 
     OVector vector;
     initVector(&vector);

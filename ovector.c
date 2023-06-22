@@ -1,12 +1,7 @@
+#include "ovector.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
-typedef struct OVector{
-    unsigned int size;
-    unsigned int capacity;
-    int* array;
-} OVector;
 
 int* createArray(int capacity) {
     int* array = malloc(capacity*sizeof(int));
