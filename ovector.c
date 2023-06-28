@@ -1,11 +1,14 @@
 #include "ovector.h"
-#include <stdio.h>
 #include <stdlib.h>
-
+#include <stdio.h>
 
 int* createArray(int capacity) {
     int* array = malloc(capacity*sizeof(int));
-    return array;
+    if(array == NULL){
+        printf("Memory allocation for Ovector failed.\n");
+    }else{
+        return array;
+    }
 }
 
 void initVector(OVector* vector) {

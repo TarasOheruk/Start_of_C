@@ -7,16 +7,9 @@ typedef struct OVector{
     int* array;
 } OVector;
 
-
-int* createArray(int capacity);
-
 void initVector(OVector* vector);
 
 void deleteArray(OVector* vector);
-
-void resizeArray(OVector* vector, int newCapacity);
-
-void sizeIncrement(OVector* vector);
 
 void pushBack(OVector* vector, int element);
 
