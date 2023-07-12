@@ -1,37 +1,37 @@
+#include <assert.h>
+
 #ifndef TEST_FUNCTIONS_H
 #define TEST_FUNCTIONS_H
 
-#define ASSERT_EQ(expected, actual) do { \
-if ((expected) != (actual)) { \
-        printf("TEST FAILED!!! Bad cred in ovector: expected %d, actual %d but we continue\n", (expected), (actual)); \
-        return; \
-} \
-} while(0)
+#define ASSERT_EQ(expected, actual){ \
+if ((expected) != (actual)) \
+        printf("TEST FAILED! expected %d, actual %d\n", (expected), (actual)); \
+assert((expected) == (actual)); \
+}
 
 void runTests();
 
-void initVector_conditionsDefault_shouldCreateArray();
+void initVector_createArray();
 
-void deleteArray__conditionsBad_shouldDeleteArray();
+void deleteArray_deleteArray();
 
-void pushBack__conditionsGood_shouldAddtoArrayInBack();
+void pushBack_addtoArrayInBack();
 
-void pushFront__conditionsGood_shouldAddtoArrayInFront();
+void pushFront_shouldAddtoArrayInFront();
 
-void mixPush__conditionsGood_shouldAddElemetns();
+void mixPush_addElemetns();
 
-void popBack__conditionsGood_shouldRemoveElemetnBack();
+void popBack_removeElemetnBack();
 
-void popFront__conditionsGood_shouldRemoveElemetnFront();
+void popFront_removeElemetnFront();
 
-void clear__conditionsGood_shouldMakeDefaultOvector();
+void clear_makeDefaultOvector();
 
-void stressPush__conditionsGood_shouldAddtoArray();
+void stressPush_addtoArray();
 
-void removeElem__conditionsGood_shouldRemoveByElem();
+void removeElem_removeByElem();
 
-void sizeIncrement__conditionsGood_shouldIncreaseSizeOfArray();
+void sizeIncrement_increaseSizeOfArray();
 
-void isOvectorNull__conditionsGood_shouldCheckArrayOnNull();
 
 #endif // TEST_FUNCTIONS_H

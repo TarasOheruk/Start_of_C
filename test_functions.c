@@ -3,123 +3,158 @@
 #include <stdio.h>
 #include <assert.h>
 
-OVector vector;
-
-OVector vectorDeleted;
-
 void runTests(){
 
-    initVector_conditionsDefault_shouldCreateArray();
+    initVector_createArray();
 
-    deleteArray__conditionsBad_shouldDeleteArray();
+    deleteArray_deleteArray();
 
-    pushBack__conditionsGood_shouldAddtoArrayInBack();
+    pushBack_addtoArrayInBack();
 
-    pushFront__conditionsGood_shouldAddtoArrayInFront();
+    pushFront_shouldAddtoArrayInFront();
 
-    mixPush__conditionsGood_shouldAddElemetns();
+    mixPush_addElemetns();
 
-    popBack__conditionsGood_shouldRemoveElemetnBack();
+    popBack_removeElemetnBack();
 
-    popFront__conditionsGood_shouldRemoveElemetnFront();
+    popFront_removeElemetnFront();
 
-    clear__conditionsGood_shouldMakeDefaultOvector();
+    clear_makeDefaultOvector();
 
-    stressPush__conditionsGood_shouldAddtoArray();
+    stressPush_addtoArray();
 
-    removeElem__conditionsGood_shouldRemoveByElem();
+    removeElem_removeByElem();
 
-    sizeIncrement__conditionsGood_shouldIncreaseSizeOfArray();
+    sizeIncrement_increaseSizeOfArray();
 
-    isOvectorNull__conditionsGood_shouldCheckArrayOnNull();
 }
 
-void initVector_conditionsDefault_shouldCreateArray(){
+void initVector_createArray(){
+     OVector vector;
      initVector(&vector);
-     assert(5 == vector.capacity);
-     ASSERT_EQ(5 , vector.capacity); //??
+     ASSERT_EQ(0 , vector.size);
+     ASSERT_EQ(5 , vector.capacity);
 }
 
-void deleteArray__conditionsBad_shouldDeleteArray(){
-     initVector(&vectorDeleted);
-     deleteArray(&vectorDeleted);
-     assert(NULL == vectorDeleted.array);
-     initVector(&vectorDeleted);
-     assert(NULL != vectorDeleted.array);
+void deleteArray_deleteArray(){
+     OVector vector;
+     initVector(&vector);
+     deleteArray(&vector);
+     ASSERT_EQ(NULL , vector.array);
+     ASSERT_EQ(0 , vector.size);
+     ASSERT_EQ(5 , vector.capacity);
 }
 
-void pushBack__conditionsGood_shouldAddtoArrayInBack(){
-     assert(0 == vector.size);
+void pushBack_addtoArrayInBack(){
+     OVector vector;
+     initVector(&vector);
+     ASSERT_EQ(0 , vector.size);
      pushBack(&vector, 100);
+     ASSERT_EQ(1 , vector.size);
      pushBack(&vector, 200);
+     ASSERT_EQ(2 , vector.size);
      pushBack(&vector, 300);
+     ASSERT_EQ(3 , vector.size);
      pushBack(&vector, 400);
-     assert(4 == vector.size);
-     assert(400 == vector.array[3]);
+     ASSERT_EQ(4 , vector.size);
+     ASSERT_EQ(100 , vector.array[0]);
+     ASSERT_EQ(200 , vector.array[1]);
+     ASSERT_EQ(300 , vector.array[2]);
+     ASSERT_EQ(400 , vector.array[3]);
 }
 
-void pushFront__conditionsGood_shouldAddtoArrayInFront(){
+void pushFront_shouldAddtoArrayInFront(){
+     OVector vector;
+     initVector(&vector);
      pushFront(&vector, 111);
+     ASSERT_EQ(1 , vector.size);
      pushFront(&vector, 122);
-     assert(6 == vector.size);
-     assert(122 == vector.array[0]);
+     ASSERT_EQ(2 , vector.size);
+     ASSERT_EQ(122 , vector.array[0]);
 }
 
-void mixPush__conditionsGood_shouldAddElemetns(){
+void mixPush_addElemetns(){
+     OVector vector;
+     initVector(&vector);
      pushBack(&vector, 500);
+     ASSERT_EQ(1 , vector.size);
      pushFront(&vector, 122);
-     assert(8 == vector.size);
-     assert(122 == vector.array[0]);
+     ASSERT_EQ(2 , vector.size);
+     ASSERT_EQ(122 , vector.array[0]);
 }
 
-void popBack__conditionsGood_shouldRemoveElemetnBack(){
+void popBack_removeElemetnBack(){
+     OVector vector;
+     initVector(&vector);
+     pushBack(&vector, 500);
+     ASSERT_EQ(1 , vector.size);
+     pushFront(&vector, 122);
+     ASSERT_EQ(2 , vector.size);
      popBack(&vector);
+     ASSERT_EQ(1 , vector.size);
      popBack(&vector);
-     assert(6 == vector.size);
-     assert(300 == vector.array[5]);
+     ASSERT_EQ(0 , vector.size);
 }
 
-void popFront__conditionsGood_shouldRemoveElemetnFront(){
+void popFront_removeElemetnFront(){
+     OVector vector;
+     initVector(&vector);
+     pushBack(&vector, 500);
+     ASSERT_EQ(1 , vector.size);
+     pushFront(&vector, 122);
+     ASSERT_EQ(2 , vector.size);
      popFront(&vector);
+     ASSERT_EQ(1 , vector.size);
      popFront(&vector);
-     assert(4 == vector.size);
-     assert(111 == vector.array[0]);
+     ASSERT_EQ(0 , vector.size);
 }
 
-void clear__conditionsGood_shouldMakeDefaultOvector(){
+void clear_makeDefaultOvector(){
+     OVector vector;
+     initVector(&vector);
      clear(&vector);
-     assert(0 == vector.size);
-     assert(5 == vector.capacity);
+     ASSERT_EQ(0 , vector.size);
+     ASSERT_EQ(5 , vector.capacity);
 }
 
-void stressPush__conditionsGood_shouldAddtoArray(){
+void stressPush_addtoArray(){
+     OVector vector;
+     initVector(&vector);
      for(int i = 0; i <= 100; i++) {
-         pushBack(&vectorDeleted, i);
+         pushBack(&vector, i);
      }
      for(int j = 101; j < 200; j++) {
-         pushFront(&vectorDeleted, j);
+         pushFront(&vector, j);
      }
 
-     assert(200 == vectorDeleted.size);
-     assert(320 == vectorDeleted.capacity);
+     ASSERT_EQ(200 , vector.size);
+     ASSERT_EQ(320 , vector.capacity);
 
 }
 
-void removeElem__conditionsGood_shouldRemoveByElem(){
-     removeElem(&vectorDeleted, 199);
-     removeElem(&vectorDeleted, 0);
+void removeElem_removeByElem(){
+     OVector vector;
+     initVector(&vector);
+     pushBack(&vector, 500);
+     ASSERT_EQ(1 , vector.size);
+     pushFront(&vector, 122);
+     ASSERT_EQ(2 , vector.size);
+     pushBack(&vector, 500);
+     ASSERT_EQ(3 , vector.size);
+     removeElem(&vector, 0);
+     ASSERT_EQ(2 , vector.size);
+     removeElem(&vector, 1);
      //assert(NULL == vectorDeleted.array[200]);
-     assert(198 == vectorDeleted.size);
+     ASSERT_EQ(1 , vector.size);
 }
 
-void sizeIncrement__conditionsGood_shouldIncreaseSizeOfArray(){
+void sizeIncrement_increaseSizeOfArray(){
+     OVector vector;
+     initVector(&vector);
      for(int i = 0; i <= 5; i++) {
          pushBack(&vector, i);
      }
-     assert(10 == vector.capacity);
+     ASSERT_EQ(10 , vector.capacity);
+     ASSERT_EQ(6 , vector.size);
 }
 
-void isOvectorNull__conditionsGood_shouldCheckArrayOnNull(){
-
-
-}
