@@ -1,9 +1,11 @@
 #include "ovector.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 
-int* createArray(int capacity) {
+int* createArray(unsigned int capacity) {
     int* array = malloc(capacity*sizeof(int));
+
     if(array == NULL){
         printf("Memory allocation for Ovector failed.\n");
     }else{
@@ -17,12 +19,19 @@ void initVector(OVector* vector) {
     vector->array = createArray(vector->capacity);
 }
 
+bool isOvectorNull(OVector* vector) {
+    return vector->array == NULL;
+}
+
 void deleteArray(OVector* vector) {
+    if (isOvectorNull(vector)){
+        return;
+    }
     free(vector->array);
     vector->array = NULL;
 }
 
-void resizeArray(OVector* vector, int newCapacity) {
+void resizeArray(OVector* vector,unsigned int newCapacity) {
     int* newArray = realloc(vector->array, newCapacity * sizeof(int));
     if (newArray != NULL) {
         vector->array = newArray;
@@ -37,12 +46,18 @@ void sizeIncrement(OVector* vector){
     }
 }
 
-void pushBack(OVector* vector, int element) {
+void pushBack(OVector* vector,unsigned int element) {
+    if (isOvectorNull(vector)){
+        return;
+    }
     sizeIncrement(vector);
     vector->array[vector->size++] = element;
 }
 
-void pushFront(OVector* vector, int element) {
+void pushFront(OVector* vector,unsigned int element) {
+    if (isOvectorNull(vector)){
+        return;
+    }
     sizeIncrement(vector);
     for (int i = vector->size; i >= 0; i--) {
         vector->array[i] = vector->array[i - 1];
@@ -52,12 +67,18 @@ void pushFront(OVector* vector, int element) {
 }
 
 void popBack(OVector* vector ) {
+    if (isOvectorNull(vector)){
+        return;
+    }
     if(vector->size > 0){
         vector->size--;
     }
 }
 
 void popFront(OVector* vector ) {
+    if (isOvectorNull(vector)){
+        return;
+    }
     if(vector->size > 0){
         for (int i = 0; i < vector->size; i++) {
             vector->array[i] = vector->array[i + 1];
@@ -72,7 +93,10 @@ void clear(OVector* vector) {
     resizeArray(vector, 5);
 }
 
-void removeElem(OVector* vector, int index) {
+void removeElem(OVector* vector,unsigned int index) {
+    if (isOvectorNull(vector)){
+        return;
+    }
     if (index >= 0 && index < vector->size) {
         for (int i = index; i < vector->size - 1; i++) {
             vector->array[i] = vector->array[i + 1];
@@ -82,6 +106,9 @@ void removeElem(OVector* vector, int index) {
 }
 
 void show(OVector* vector) {
+    if (isOvectorNull(vector)){
+        return;
+    }
     printf("\n{ ");
     for (int i = 0; i < vector->size; i++) {
         printf("%d ",vector->array[i]);

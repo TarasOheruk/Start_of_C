@@ -11,9 +11,9 @@ void initVector(OVector* vector);
 
 void deleteArray(OVector* vector);
 
-void pushBack(OVector* vector, int element);
+void pushBack(OVector* vector,unsigned int element);
 
-void pushFront(OVector* vector, int element);
+void pushFront(OVector* vector,unsigned int element);
 
 void popBack(OVector* vector);
 
@@ -21,7 +21,7 @@ void popFront(OVector* vector);
 
 void clear(OVector* vector);
 
-void removeElem(OVector* vector, int index);
+void removeElem(OVector* vector,unsigned int index);
 
 void show(OVector* vector);
 
