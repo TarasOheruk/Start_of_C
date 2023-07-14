@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/testOvector.dir/ovectorTest.c.o -o testOvector  ../src/libmodern_library.a 

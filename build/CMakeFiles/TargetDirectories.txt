@@ -1,0 +1,11 @@
+/mnt/e/Test/Test/build/CMakeFiles/edit_cache.dir
+/mnt/e/Test/Test/build/CMakeFiles/rebuild_cache.dir
+/mnt/e/Test/Test/build/src/CMakeFiles/modern_library.dir
+/mnt/e/Test/Test/build/src/CMakeFiles/edit_cache.dir
+/mnt/e/Test/Test/build/src/CMakeFiles/rebuild_cache.dir
+/mnt/e/Test/Test/build/apps/CMakeFiles/app.dir
+/mnt/e/Test/Test/build/apps/CMakeFiles/edit_cache.dir
+/mnt/e/Test/Test/build/apps/CMakeFiles/rebuild_cache.dir
+/mnt/e/Test/Test/build/tests/CMakeFiles/testOvector.dir
+/mnt/e/Test/Test/build/tests/CMakeFiles/edit_cache.dir
+/mnt/e/Test/Test/build/tests/CMakeFiles/rebuild_cache.dir

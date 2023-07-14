@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmodern_library.a CMakeFiles/modern_library.dir/ovector.c.o
+/usr/bin/ranlib libmodern_library.a

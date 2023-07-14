@@ -1,12 +1,19 @@
-cmake_minimum_required(VERSION 3.5)
+# Works with 3.15 and tested through 3.21
+cmake_minimum_required(VERSION 3.15...3.25)
 
-project(ovector LANGUAGES C)
+# Project name and a few useful settings. Other commands can pick up the results
+project(
+  ModernCMakeExample
+  VERSION 0.1
+  DESCRIPTION "An example project with CMake"
+  LANGUAGES C)
 
-add_library(Ovectorlib SHARED ovector.c ovector.h)
+# The compiled library code is here
+add_subdirectory(src)
 
-add_library(ovector_test STATIC test_functions.c ovector.h test_functions.h)
+# The executable code is here
+add_subdirectory(apps)
 
-add_executable(ovector main.c)
+add_subdirectory(tests)
 
-target_link_libraries(ovector Ovectorlib)
-target_link_libraries(ovector ovector_test)
+

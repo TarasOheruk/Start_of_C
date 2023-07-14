@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/app.dir/app.c.o -o app  ../src/libmodern_library.a 

@@ -1,12 +1,7 @@
-#include "ovector.h"
-#include "test_functions.h"
+#include <modern/ovector.h>
 #include <stdio.h>
 
-
 int main() {
-
-    runTests();
-
     OVector vector;
     initVector(&vector);
 
